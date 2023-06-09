@@ -1,10 +1,6 @@
-
-
-
-
 const getRecipesHandler = (req, res) => {
     const { nameRecipe } = req.query;
-    if (nameRecipe !== undefined) res.status(200).send(`Busca la receta ${nameRecipe}`);
+    if (nameRecipe) res.status(200).send(`Busca la receta ${nameRecipe}`);
     else res.status(200).send("NIY: ESTA RUTA TRAE LA INFO DE TODAS LAS RECETAS");
 }
 
@@ -17,7 +13,14 @@ const getNameRecupeHandler = (req, res) => {
 }
 
 const createRecipeHandler = (req, res) => {
-    res.status(200).send("NIY: ESTA RUTA CREA UNA NUEVA RECETA");
+    const { nombre, imagen, resumendelplato, niveldecomidasaludable, pasoapaso } = req.body;
+    res.status(200).send(`Usuario Creado con estos Datos:
+        nombre: ${nombre},
+        imagen: ${imagen},
+        resumendelplato: ${resumendelplato},
+        niveldecomidasaludable: ${niveldecomidasaludable},
+        pasoapaso: ${pasoapaso}
+    `);
 }
 
 module.exports = { getRecipesHandler, getIdRecipeHandler, getNameRecupeHandler, createRecipeHandler }
